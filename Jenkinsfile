@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'lts-bullseye-slim'
+    }
+
+  }
   stages {
     stage('Checkout') {
       steps {
@@ -13,5 +18,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    PORT = '3000'
   }
 }
