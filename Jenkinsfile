@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'node:18.14'
+      args '-p 3000:3000'
     }
 
   }
@@ -14,7 +15,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh './build.sh'
+        sh 'npm install && npm run build'
       }
     }
 
