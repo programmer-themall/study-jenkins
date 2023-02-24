@@ -15,6 +15,13 @@ pipeline {
       }
     }
 
+    stage('test3') {
+      steps {
+        sh 'npm -v'
+        sh 'node -v'
+      }
+    }
+
   }
   environment {
     DOCKERHUB_USERNAME = 'jenwitkmonz@gmail.com'
