@@ -1,42 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout') {
+    stage('Test') {
       steps {
-        git(url: 'https://github.com/programmer-themall/study-jenkins.git', branch: 'main')
-        sh 'sudo -s'
-      }
-    }
-
-    stage('Log') {
-      parallel {
-        stage('Log') {
-          steps {
-            sh 'ls -a'
-          }
-        }
-
-        stage('Install node_module') {
-          steps {
-            sh 'sudo -s'
-            sh 'npm i'
-          }
-        }
-
-      }
-    }
-
-    stage('Build') {
-      steps {
-        sh 'sudo -s'
-        sh 'docker build -f Dockerfile .'
-      }
-    }
-
-    stage('Push to Docker Hub Repo') {
-      steps {
-        sh 'sudo -s'
-        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+        sh 'whoami'
       }
     }
 
