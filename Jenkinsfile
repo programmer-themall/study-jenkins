@@ -4,7 +4,7 @@ pipeline {
     stage('Checkout') {
       steps {
         git(url: 'https://github.com/programmer-themall/study-jenkins.git', branch: 'main')
-        sh 'sudo -s'
+        sh 'sudo -S'
       }
     }
 
