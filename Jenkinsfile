@@ -1,11 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:18.14'
-      args '-p 3000:3000'
-    }
-
-  }
+  agent any
   stages {
     stage('Checkout') {
       steps {
@@ -15,8 +9,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh '''node -v
-npm -v'''
+        sh 'node -v && npm -v'
       }
     }
 
