@@ -1,9 +1,9 @@
 pipeline {
   agent {
-      docker {
-          image 'node:lts-bullseye-slim' 
-          args '-p 3000:3000' 
-      }
+    docker {
+      image 'node:18.14'
+    }
+
   }
   stages {
     stage('Checkout') {
@@ -18,8 +18,5 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    PORT = '3000'
   }
 }
