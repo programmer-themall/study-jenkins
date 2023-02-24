@@ -4,6 +4,14 @@ pipeline {
     stage('Test') {
       steps {
         sh 'whoami'
+        sh 'sudo -s'
+        sh 'whoami'
+      }
+    }
+
+    stage('test2') {
+      steps {
+        sh 'whoami'
       }
     }
 
