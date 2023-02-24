@@ -7,13 +7,9 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('') {
       steps {
-        nodejs('recent node') {
-          sh 'node -v'
-          sh 'npm -v'
-        }
-
+        sh 'ls -a'
       }
     }
 
