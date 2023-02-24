@@ -9,7 +9,11 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'node -v && npm -v'
+        nodejs('recent node') {
+          sh 'node -v'
+          sh 'npm -v'
+        }
+
       }
     }
 
