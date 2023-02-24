@@ -18,6 +18,7 @@ pipeline {
 
         stage('Install node_module') {
           steps {
+            sh 'sudo -s'
             sh 'npm i'
           }
         }
@@ -27,12 +28,14 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh 'sudo -s'
         sh 'docker build -f Dockerfile .'
       }
     }
 
     stage('Push to Docker Hub Repo') {
       steps {
+        sh 'sudo -s'
         sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
       }
     }
