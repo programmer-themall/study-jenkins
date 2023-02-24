@@ -24,5 +24,21 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        sh 'docker build -f Dockerfile .'
+      }
+    }
+
+    stage('Push to Docker Hub Repo') {
+      steps {
+        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+      }
+    }
+
+  }
+  environment {
+    DOCKERHUB_USERNAME = 'jenwitkmonz@gmail.com'
+    DOCKERHUB_PASSWORD = '9ZnHUhfo0HFUx3NW'
   }
 }
