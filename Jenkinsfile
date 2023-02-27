@@ -19,6 +19,7 @@ pipeline {
       steps {
         sh 'npm -v'
         sh 'node -v'
+        sh 'echo $PATH'
       }
     }
 
