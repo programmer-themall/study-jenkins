@@ -17,9 +17,9 @@ pipeline {
 
     stage('test3') {
       steps {
+        sh 'echo $PATH'
         sh 'npm -v'
         sh 'node -v'
-        sh 'echo $PATH'
       }
     }
 
