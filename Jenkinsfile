@@ -20,6 +20,7 @@ pipeline {
     stage('Push Images') {
       steps {
         echo 'Push image'
+        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD '
         sh 'docker push study-jenkins:0.0.1'
         sh 'docker rmi study-jenkins:0.0.1'
       }
