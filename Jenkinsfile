@@ -13,7 +13,7 @@ pipeline {
     stage('Build Images') {
       steps {
         echo 'Build images'
-        sh 'docker build -t study-jenkins:0.0.1 .'
+        sh 'docker build -t kritmn00817/study-jenkins:0.0.1 .'
       }
     }
 
@@ -21,8 +21,8 @@ pipeline {
       steps {
         echo 'Push image'
         sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD '
-        sh 'docker push study-jenkins:0.0.1'
-        sh 'docker rmi study-jenkins:0.0.1'
+        sh 'docker push kritmn00817/study-jenkins:0.0.1'
+        sh 'docker rmi kritmn00817/study-jenkins:0.0.1'
       }
     }
 
