@@ -5,6 +5,9 @@ COPY . ./
 # Use yarn 3 for package management
 RUN corepack enable
 
+# Activate yarn
+RUN corepack prepare yarn@stable --activate
+
 # Install packages
 RUN yarn
 
