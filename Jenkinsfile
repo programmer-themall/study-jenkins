@@ -29,7 +29,7 @@ pipeline {
     stage('Git commit and Push') {
       steps {
         sh 'git tag -d v0.0.1-test-jenkins || true'
-        sh 'git remote set-url origin https://kritjenwit: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@github.com/programmer-themall/study-jenkins.git'
+        sh 'git remote set-url origin git@github.com:programmer-themall/study-jenkins.git'
         sh 'git tag v0.0.1-test-jenkins || true'
         sh 'git push origin v0.0.1-test-jenkins'
       }
