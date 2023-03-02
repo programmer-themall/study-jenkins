@@ -19,6 +19,7 @@ pipeline {
       steps {
         sh 'echo $PATH'
         sh '/root/.nvm/versions/node/v18.14.1/bin/npm -v'
+        sh 'docker -v'
       }
     }
 
