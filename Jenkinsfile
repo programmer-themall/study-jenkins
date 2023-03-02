@@ -26,6 +26,26 @@ pipeline {
       }
     }
 
+    stage('Git commit and Push') {
+      steps {
+        sh 'git remote set-url origin https://github.com/programmer-themall/study-jenkins.git'
+        sh 'git tag v0.0.1-test-jenkins'
+        sh 'git push origin v0.0.1-test-jenkins'
+      }
+    }
+
+    stage('Test Deployment') {
+      steps {
+        sh 'docker stop kritmn00817/study-jenkins:0.0.1 || true'
+        sh 'docker rm kritmn00817/study-jenkins:0.0.1 || true'
+        sh 'docker run -d kritmn00817/study-jenkins:0.0.1'
+        sleep 15
+        sh 'docker inspect --format \'{{ .State.Status }}\' kritmn00817/study-jenkins:0.0.1'
+        sh 'docker stop kritmn00817/study-jenkins:0.0.1 || true'
+        sh 'docker rm kritmn00817/study-jenkins:0.0.1 || true'
+      }
+    }
+
   }
   environment {
     DOCKERHUB_USERNAME = 'kritmn00817'
