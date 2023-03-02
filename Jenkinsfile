@@ -42,7 +42,7 @@ pipeline {
         sh 'docker rm kritmn00817/study-jenkins:0.0.1 || true'
         sh 'docker run -d kritmn00817/study-jenkins:0.0.1'
         sleep 15
-        sh 'docker inspect --format \'{{ .State.Status }}\' kritmn00817/study-jenkins:0.0.1'
+        sh 'docker inspect --format \'{{ .Id }}\' kritmn00817/study-jenkins:0.0.1'
         sh 'docker stop kritmn00817/study-jenkins:0.0.1 || true'
         sh 'docker rm kritmn00817/study-jenkins:0.0.1 || true'
       }
