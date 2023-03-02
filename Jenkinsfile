@@ -1,24 +1,27 @@
 pipeline {
   agent any
   stages {
-    stage('Test') {
+    stage('Prepare GIT Repo') {
       steps {
-        sh 'whoami'
-        sh 'sudo -s'
-        sh 'whoami'
+        echo 'Pull  main repo.'
+        git(url: 'https://github.com/programmer-themall/study-jenkins.git', branch: 'main', changelog: true)
+        sh 'git rev-parse HEAD'
+        echo 'APIs version v1.0.0-1-20230302 : Build factor false'
       }
     }
 
-    stage('test2') {
+    stage('Build Images') {
       steps {
-        sh 'whoami'
+        echo 'Build images'
+        sh 'docker build -t study-jenkins:0.0.1 .'
       }
     }
 
-    stage('test3') {
+    stage('Push Images') {
       steps {
-        sh 'echo $PATH'
-        sh 'docker -v'
+        echo 'Push image'
+        sh 'docker push study-jenkins:0.0.1'
+        sh 'docker rmi study-jenkins:0.0.1'
       }
     }
 
